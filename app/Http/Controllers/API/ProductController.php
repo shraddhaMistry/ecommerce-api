@@ -68,6 +68,16 @@ class ProductController extends Controller
         return response(['message' => 'Product updated successfully!', 'data' => $product], 200);
     }
 
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return response([
+            'message' => 'Get Product details successfully!',
+            'data' => $product
+        ], 200);
+    }
+
     public function destroy(Product $product)
     {
         $product->delete();
